@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 import pe.scotiabank.serviciows.dto.PedidoDTO;
 import pe.scotiabank.serviciows.service.VentaService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/v1/venta")
 public class VentaController {
@@ -18,7 +20,7 @@ public class VentaController {
     VentaService ventaService;
 
     @PostMapping("/calculoImpuesto")
-    public ResponseEntity<Float> calculoImpuesto(@RequestBody PedidoDTO pedidoDTO){
-        return new ResponseEntity<>(ventaService.calculoImpuesto(pedidoDTO), HttpStatus.OK);
+    public ResponseEntity<Float> calculoImpuesto(@RequestBody List<PedidoDTO> listaPedidoDTO){
+        return new ResponseEntity<>(ventaService.calculoImpuesto(listaPedidoDTO), HttpStatus.OK);
     }
 }
