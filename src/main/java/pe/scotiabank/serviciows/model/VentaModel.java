@@ -7,11 +7,13 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 @Setter
 @Getter
 @Entity
 @Table(name = "Venta")
-public class VentaModel {
+public class VentaModel{
     @Id
     @Column(name="id_venta",nullable = false)
     private Integer idVenta;
