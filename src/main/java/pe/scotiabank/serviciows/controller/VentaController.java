@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pe.scotiabank.serviciows.dto.PedidoDTO;
+import pe.scotiabank.serviciows.dto.VentaDTO;
 import pe.scotiabank.serviciows.model.VentaModel;
 import pe.scotiabank.serviciows.service.VentaService;
 
@@ -23,7 +24,7 @@ public class VentaController {
     }
 
     @GetMapping("/getVentas")
-    public ResponseEntity<List<VentaModel>> getVentas(){
+    public ResponseEntity<List<VentaDTO>> getVentas(){
         return new ResponseEntity<>(ventaService.getVentas(),HttpStatus.OK);
     }
 }
