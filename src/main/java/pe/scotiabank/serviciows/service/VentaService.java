@@ -1,6 +1,7 @@
 package pe.scotiabank.serviciows.service;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import pe.scotiabank.serviciows.dto.PedidoDTO;
@@ -43,4 +44,21 @@ public class VentaService {
         List<VentaDTO> listaVentaDTO = modelMapper.map(listaVentas, List.class).stream().toList();
         return listaVentaDTO;
     }
+
+    public VentaDTO addVenta(VentaDTO ventaDTO){
+        VentaModel ventaModel = modelMapper.map(ventaDTO,VentaModel.class);
+        ventaModel = this.ventaRepository.save(ventaModel);
+        return modelMapper.map(ventaModel,VentaDTO.class);
+    }
+
+    public boolean deleteVenta(Long id) {
+        if (ventaRepository.existsById(Math.toIntExact(id))) {
+            ventaRepository.deleteById(Math.toIntExact(id));
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
 }

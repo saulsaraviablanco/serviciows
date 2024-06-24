@@ -27,4 +27,27 @@ public class VentaController {
     public ResponseEntity<List<VentaDTO>> getVentas(){
         return new ResponseEntity<>(ventaService.getVentas(),HttpStatus.OK);
     }
+
+    @PostMapping("/addVentas")
+    public ResponseEntity<VentaDTO> addVenta(@RequestBody VentaDTO ventaDTO){
+        return new ResponseEntity<>(ventaService.addVenta(ventaDTO), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/deleteVentas/{id}")
+    public ResponseEntity<Void> deleteVenta(@PathVariable Long id) {
+        try {
+            boolean isRemoved = ventaService.deleteVenta(id);
+            if (!isRemoved) {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+
+    
+
+
 }
