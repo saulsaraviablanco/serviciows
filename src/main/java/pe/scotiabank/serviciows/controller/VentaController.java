@@ -34,7 +34,7 @@ public class VentaController {
     }
 
     @DeleteMapping("/deleteVentas/{id}")
-    public ResponseEntity<Void> deleteVenta(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteVenta(@PathVariable Integer id) {
         try {
             boolean isRemoved = ventaService.deleteVenta(id);
             if (!isRemoved) {

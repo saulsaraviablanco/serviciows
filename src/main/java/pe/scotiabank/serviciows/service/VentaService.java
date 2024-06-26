@@ -51,7 +51,7 @@ public class VentaService {
         return modelMapper.map(ventaModel,VentaDTO.class);
     }
 
-    public boolean deleteVenta(Long id) {
+    public boolean deleteVenta(Integer id) {
         if (ventaRepository.existsById(Math.toIntExact(id))) {
             ventaRepository.deleteById(Math.toIntExact(id));
             return true;
